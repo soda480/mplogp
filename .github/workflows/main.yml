@@ -14,11 +14,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Install packages
+      run: apk --update --no-cache add gcc libc-dev libffi-dev openssl-dev
+
     - name: Install pybuilder
       run: pip install pybuilder
-
-    - name: Install dependencies
-      run: pyb install_dependencies
 
     - name: Execute build
       run: pyb install
