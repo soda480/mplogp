@@ -6,9 +6,6 @@ on:
   pull_request:
     branches:
       - master
-
-    env:
-      CRYPTOGRAPHY_DONT_BUILD_RUST: 1
 jobs:
   build:
     runs-on: ubuntu-18.04
@@ -21,6 +18,8 @@ jobs:
       run: apk --update --no-cache add gcc libc-dev libffi-dev openssl-dev
 
     - name: Install twine
+      env:
+        CRYPTOGRAPHY_DONT_BUILD_RUST: 1
       run: pip install twine
 
     - name: Install pybuilder
