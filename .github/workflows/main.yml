@@ -6,6 +6,9 @@ on:
   pull_request:
     branches:
       - master
+
+    env:
+      CRYPTOGRAPHY_DONT_BUILD_RUST: 1
 jobs:
   build:
     runs-on: ubuntu-18.04
