@@ -17,8 +17,11 @@ jobs:
     - name: Install packages
       run: apk --update --no-cache add gcc libc-dev libffi-dev openssl-dev
 
+    - name: Install twine
+      run: pip install twine
+
     - name: Install pybuilder
       run: pip install pybuilder
 
     - name: Execute build
-      run: pyb install
+      run: pyb
