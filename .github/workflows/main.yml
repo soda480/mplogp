@@ -27,3 +27,5 @@ jobs:
 
     - name: Execute build
       run: pyb
+      env:
+        CRYPTOGRAPHY_DONT_BUILD_RUST: 1
