@@ -7,7 +7,6 @@ from mock import patch
 import logging
 
 from mplogp.mplogp import main
-from mplogp.mplogp import configure_logging
 from mplogp.mplogp import get_parser
 
 
@@ -27,20 +26,12 @@ class TestMplogp(unittest.TestCase):
         pass
 
     @patch('mplogp.mplogp.get_parser')
-    @patch('mplogp.mplogp.configure_logging')
-    def test__main_Should_CallExpected_When_Called(self, *patches):
+    @patch('mplogp.mplogp.get_lines')
+    @patch('mplogp.mplogp.parse_lines')
+    @patch('mplogp.mplogp.write_logs')
+    def test__main_Should_CallExpected_When_Called(self, write_logs_patch, *patches):
         main()
-
-    @patch('mplogp.mplogp.sys.argv', ['arg1', 'arg2'])
-    @patch('mplogp.mplogp.logging.FileHandler')
-    def test_configure_logging_Should_CallExpected_When_CalledWithoutName(self, filehandler_patch, *patches):
-        configure_logging()
-        filehandler_patch.assert_called_once_with('arg1.log')
-
-    @patch('mplogp.mplogp.logging.FileHandler')
-    def test_configure_logging_Should_CallExpected_When_CalledWithName(self, filehandler_patch, *patches):
-        configure_logging(name='mylog')
-        filehandler_patch.assert_called_once_with('mylog.log')
+        write_logs_patch.assert_called_once()
 
     @patch('mplogp.mplogp.argparse.ArgumentParser')
     def test__get_parser_Should_ReturnExpected_When_Called(self, argumentparser_patch, *patches):

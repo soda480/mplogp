@@ -5,6 +5,7 @@ from pybuilder.core import Author
 
 use_plugin('python.core')
 use_plugin('python.unittest')
+use_plugin('python.install_dependencies')
 use_plugin('python.flake8')
 use_plugin('python.coverage')
 # only enable when publishing
@@ -40,6 +41,7 @@ def set_properties(project):
     project.set_property('flake8_include_scripts', True)
     project.set_property('flake8_include_test_sources', True)
     project.set_property('flake8_ignore', '')
+    project.set_property('coverage_break_build', False)
     project.build_depends_on_requirements('requirements-build.txt')
     project.depends_on_requirements('requirements.txt')
     project.set_property('distutils_console_scripts', ['mplogp = mplogp.mplogp:main'])
