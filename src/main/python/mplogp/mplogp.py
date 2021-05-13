@@ -37,14 +37,14 @@ def get_parser():
 
 
 def get_lines(filename):
-    """ return lines read from filename
+    """ return list of lines read from filename
     """
     with open(filename) as infile:
         return infile.readlines()
 
 
 def parse_lines(lines):
-    """ parse lines by process
+    """ return dictionary whose keys are names of processes and values are lines belonging to the respective process
     """
     parsed = {}
     regex = r'^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{1,3} (?P<process_id>[a-zA-Z0-9\-]+) .*$'
@@ -60,7 +60,7 @@ def parse_lines(lines):
 
 
 def get_timestamp(line):
-    """ return sanitized timestamp from line
+    """ return sanitized timestamp contained in line
     """
     timestamp = ''
     regex = r'^(?P<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}),\d{1,3} [a-zA-Z0-9\-]+ .*$'
