@@ -1,8 +1,7 @@
-
 # mplogp
 [![build](https://github.com/soda480/mplogp/actions/workflows/main.yml/badge.svg)](https://github.com/soda480/mplogp/actions/workflows/main.yml)
 [![coverage](https://img.shields.io/badge/coverage-33.93%25-red)](https://pybuilder.io/)
-[![complexity](https://img.shields.io/badge/complexity-Stable:%206-olive)](https://radon.readthedocs.io/en/latest/api.html#module-radon.complexity)
+[![complexity](https://img.shields.io/badge/complexity-Simple:%204-green)](https://radon.readthedocs.io/en/latest/api.html#module-radon.complexity)
 [![vulnerabilities](https://img.shields.io/badge/vulnerabilities-None-green)](https://pypi.org/project/bandit/)
 [![python](https://img.shields.io/badge/python-3.9-teal)](https://www.python.org/downloads/)
 
