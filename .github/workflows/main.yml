@@ -10,6 +10,8 @@ jobs:
   build:
     runs-on: ubuntu-18.04
     container: python:3.9-alpine
+    env:
+      CRYPTOGRAPHY_DONT_BUILD_RUST: 1
 
     steps:
     - uses: actions/checkout@v2
@@ -18,17 +20,16 @@ jobs:
       run: apk --update --no-cache add gcc libc-dev libffi-dev openssl-dev
 
     - name: Install twine
-      env:
-        CRYPTOGRAPHY_DONT_BUILD_RUST: 1
       run: pip install twine
 
     - name: Install pybuilder
       run: pip install pybuilder
 
+    - name: Install dependencies
+      run: pyb install_dependencies
+
     - name: Execute build
       run: pyb -X --no-venvs
-      env:
-        CRYPTOGRAPHY_DONT_BUILD_RUST: 1
 
     - name: Install Codecov requirements
       run: |
