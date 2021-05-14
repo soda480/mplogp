@@ -23,7 +23,7 @@ optional arguments:
 ```
 
 ### Examples
-Parse the `example3.log` file and write output to the `logs` folder and alias process their respective processor id:
+Parse the `example3.log` file and write output to the `logs` folder and alias each process log with their respective processor id:
 ```
 mplogp --log example3.log --folder logs --regex ".*processor id (.*)$"
 ```
