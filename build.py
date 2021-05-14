@@ -40,7 +40,7 @@ def set_properties(project):
     project.set_property('flake8_break_build', True)
     project.set_property('flake8_include_scripts', True)
     project.set_property('flake8_include_test_sources', True)
-    project.set_property('flake8_ignore', '')
+    project.set_property('flake8_ignore', 'E501')
     project.set_property('coverage_break_build', False)
     project.build_depends_on_requirements('requirements-build.txt')
     project.depends_on_requirements('requirements.txt')
