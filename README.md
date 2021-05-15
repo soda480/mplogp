@@ -6,14 +6,14 @@
 [![vulnerabilities](https://img.shields.io/badge/vulnerabilities-None-green)](https://pypi.org/project/bandit/)
 [![python](https://img.shields.io/badge/python-3.9-teal)](https://www.python.org/downloads/)
 
-A log parser for parsing logfile generated from multi-processing based tools. Supports log files generated with Formatter whose first two fields are: `%(asctime)s %(processName)s ...`.
+A Python script to parse a logfile generated from multi-processing based tools. The script will parse the logfile and create logs for each process under a specified timestamped folder. Supports log files generated from a log Formatter whose first two fields are: `%(asctime)s %(processName)s ...`.
 
 
 ## `mplogp`
 ```
 usage: mplogp [-h] --log LOG --folder FOLDER [--regex REGEX]
 
-A log parser for parsing logs generated from multi-processing based tools
+A Python script to parse a logfile generated from multi-processing based tools
 
 optional arguments:
   -h, --help       show this help message and exit
@@ -23,7 +23,7 @@ optional arguments:
 ```
 
 ### Examples
-Parse the `example3.log` file and write output to the `logs` folder and alias each process log with their respective processor id:
+Parse the `example3.log` file and write the parsed logs under the `logs` folder, add alias to each process log with its matched processor id:
 ```
 mplogp --log example3.log --folder logs --regex ".*processor id (.*)$"
 ```

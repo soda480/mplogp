@@ -12,7 +12,7 @@ def get_parser():
     """ return argument parser
     """
     parser = argparse.ArgumentParser(
-        description='A log parser for parsing logs generated from multi-processing based tools')
+        description='A Python script to parse a logfile generated from multi-processing based tools')
     parser.add_argument(
         '--log',
         dest='log',
