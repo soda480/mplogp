@@ -5,11 +5,8 @@ from pybuilder.core import Author
 
 use_plugin('python.core')
 use_plugin('python.unittest')
-use_plugin('python.install_dependencies')
 use_plugin('python.flake8')
 use_plugin('python.coverage')
-# only enable when publishing
-# requires dependent packages to be built from source on Alpine
 use_plugin('python.distutils')
 use_plugin('pypi:pybuilder_radon')
 use_plugin('pypi:pybuilder_bandit')
@@ -26,8 +23,7 @@ default_task = [
     'publish',
     'radon',
     'bandit',
-    'anybadge',
-    'package']
+    'anybadge']
 license = 'Apache License, Version 2.0'
 description = summary
 
@@ -48,6 +44,7 @@ def set_properties(project):
     project.set_property('radon_break_build_average_complexity_threshold', 4)
     project.set_property('radon_break_build_complexity_threshold', 10)
     project.set_property('bandit_break_build', True)
+    project.set_property('anybadge_exclude', 'coverage')
     project.set_property('anybadge_use_shields', True)
     project.set_property('distutils_readme_description', True)
     project.set_property('distutils_description_overwrite', True)
