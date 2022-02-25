@@ -1,7 +1,7 @@
 # mplogp
 [![build](https://github.com/soda480/mplogp/actions/workflows/main.yml/badge.svg)](https://github.com/soda480/mplogp/actions/workflows/main.yml)
 [![codecov](https://codecov.io/gh/soda480/mplogp/branch/main/graph/badge.svg?token=GA62T7LDGK)](https://codecov.io/gh/soda480/mplogp)
-[![Code Grade](https://www.code-inspector.com/project/22249/status/svg)](https://frontend.code-inspector.com/project/22249/dashboard)
+[![Code Grade](https://api.codiga.io/project/22249/status/svg)](https://app.codiga.io/public/project/22249/mplogp/dashboard)
 [![complexity](https://img.shields.io/badge/complexity-Simple:%204-brightgreen)](https://radon.readthedocs.io/en/latest/api.html#module-radon.complexity)
 [![vulnerabilities](https://img.shields.io/badge/vulnerabilities-None-brightgreen)](https://pypi.org/project/bandit/)
 [![python](https://img.shields.io/badge/python-3.9-teal)](https://www.python.org/downloads/)
