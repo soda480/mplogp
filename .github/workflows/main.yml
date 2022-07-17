@@ -1,5 +1,7 @@
 name: build
 on:
+  schedule:
+  - cron: "0 8 * * *"
   push:
     branches:
       - '**'
@@ -7,26 +9,49 @@ on:
     branches:
       - main
 jobs:
-  build:
+  build-images:
+    strategy:
+      matrix:
+        version: ['3.7', '3.8', '3.9', '3.10']
+    name: Build Python Docker images
     runs-on: ubuntu-20.04
-    container: python:3.9-slim
     steps:
-    - uses: actions/checkout@v2
-
-    - name: Install pybuilder
-      run: pip install pybuilder
-
-    - name: Execute build
-      run: pyb
-
-    - name: Install Codecov requirements
-      run: |
-        apt-get update
-        apt-get install -y bash curl
-        sed -e 's,filename="mplogp/,filename="src/main/python/mplogp/,g' target/reports/mplogp_coverage.xml > coverage.xml
-
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v1
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-        file: coverage.xml
+      - uses: actions/checkout@v3
+      - name: build mplogp ${{ matrix.version }} image
+        run:
+          docker image build --build-arg PYTHON_VERSION=${{ matrix.version }} -t mplogp:${{ matrix.version }} .
+      - name: save mplogp ${{ matrix.version }} image
+        if: ${{ matrix.version == '3.9' }}
+        run: |
+          mkdir -p images
+          docker save --output images/mplogp-${{ matrix.version }}.tar mplogp:${{ matrix.version }}
+      - name: upload mplogp ${{ matrix.version }} image artifact
+        if: ${{ matrix.version == '3.9' }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: image
+          path: images/mplogp-${{ matrix.version }}.tar
+  coverage:
+    if: github.ref_name == 'main'
+    name: Publish Code Coverage Report
+    needs: build-images
+    runs-on: ubuntu-20.04
+    steps:
+      - name: download image artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: image
+          path: images/
+      - name: load image
+        run:
+          docker load --input images/mplogp-3.9.tar
+      - name: prepare report
+        run: |
+          ID=$(docker create mplogp:3.9)
+          docker cp $ID:/code/target/reports/mplogp_coverage.xml mplogp_coverage.xml
+          sed -i -e 's,filename="mplogp/,filename="src/main/python/mplogp/,g' mplogp_coverage.xml
+      - name: upload report
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: mplogp_coverage.xml

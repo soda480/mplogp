@@ -4,7 +4,7 @@
 [![Code Grade](https://api.codiga.io/project/22249/status/svg)](https://app.codiga.io/public/project/22249/mplogp/dashboard)
 [![complexity](https://img.shields.io/badge/complexity-Simple:%204-brightgreen)](https://radon.readthedocs.io/en/latest/api.html#module-radon.complexity)
 [![vulnerabilities](https://img.shields.io/badge/vulnerabilities-None-brightgreen)](https://pypi.org/project/bandit/)
-[![python](https://img.shields.io/badge/python-3.9-teal)](https://www.python.org/downloads/)
+[![python](https://img.shields.io/badge/python-3.7%20%7C%203.8%20%7C%203.9%20%7C%203.10-teal)](https://www.python.org/downloads/)
 
 A Python script to parse a logfile generated from multi-processing based tools. The script will parse the logfile and create logs for each process under a specified timestamped folder. Supports log files generated from a log Formatter whose first two fields are: `%(asctime)s %(processName)s ...`.
 
@@ -49,7 +49,8 @@ logs
 Build the Docker image:
 ```bash
 docker image build \
--t prepbadge:latest .
+-t \
+mplogp:latest .
 ```
 
 Run the Docker container:
@@ -58,8 +59,8 @@ docker container run \
 --rm \
 -it \
 -v $PWD:/code \
-prepbadge:latest \
-/bin/bash
+mplogp:latest \
+bash
 ```
 
 Build the project:
