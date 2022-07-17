@@ -16,7 +16,7 @@ name = 'mplogp'
 authors = [Author('Emilio Reyes', 'soda480@gmail.com')]
 summary = 'A log parser for parsing logs generated from multi-processing based tools.'
 url = 'https://github.com/soda480/mplogp'
-version = '0.1.0'
+version = '0.1.1'
 default_task = [
     'clean',
     'analyze',
@@ -38,14 +38,13 @@ def set_properties(project):
     project.set_property('flake8_include_test_sources', True)
     project.set_property('flake8_ignore', 'E501')
     project.set_property('coverage_break_build', False)
-    project.build_depends_on_requirements('requirements-build.txt')
+    project.build_depends_on('mock')
     project.depends_on_requirements('requirements.txt')
     project.set_property('distutils_console_scripts', ['mplogp = mplogp.mplogp:main'])
     project.set_property('radon_break_build_average_complexity_threshold', 4)
     project.set_property('radon_break_build_complexity_threshold', 10)
     project.set_property('bandit_break_build', True)
     project.set_property('anybadge_exclude', 'coverage')
-    project.set_property('anybadge_use_shields', True)
     project.set_property('distutils_readme_description', True)
     project.set_property('distutils_description_overwrite', True)
     project.set_property('distutils_upload_skip_existing', True)
@@ -58,10 +57,10 @@ def set_properties(project):
         'License :: OSI Approved :: Apache Software License',
         'Operating System :: POSIX :: Linux',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
         'Topic :: Software Development :: Libraries',
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Topic :: System :: Networking',
