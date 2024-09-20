@@ -3,6 +3,7 @@
 [![coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)](https://pybuilder.io/)
 [![complexity](https://img.shields.io/badge/complexity-A-brightgreen)](https://radon.readthedocs.io/en/latest/api.html#module-radon.complexity)
 [![vulnerabilities](https://img.shields.io/badge/vulnerabilities-None-brightgreen)](https://pypi.org/project/bandit/)
+[![PyPI version](https://badge.fury.io/py/mplogp.svg)](https://badge.fury.io/py/mplogp)
 [![python](https://img.shields.io/badge/python-3.7%20%7C%203.8%20%7C%203.9%20%7C%203.10-teal)](https://www.python.org/downloads/)
 
 A Python script to parse a logfile generated from multi-processing based tools. The script will parse the logfile and create logs for each process under a specified timestamped folder. Supports log files generated from a log Formatter whose first two fields are: `%(asctime)s %(processName)s ...`.
