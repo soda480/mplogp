@@ -1,8 +1,7 @@
 # mplogp
 [![build](https://github.com/soda480/mplogp/actions/workflows/main.yml/badge.svg)](https://github.com/soda480/mplogp/actions/workflows/main.yml)
-[![codecov](https://codecov.io/gh/soda480/mplogp/branch/main/graph/badge.svg?token=GA62T7LDGK)](https://codecov.io/gh/soda480/mplogp)
-[![Code Grade](https://api.codiga.io/project/22249/status/svg)](https://app.codiga.io/public/project/22249/mplogp/dashboard)
-[![complexity](https://img.shields.io/badge/complexity-Simple:%204-brightgreen)](https://radon.readthedocs.io/en/latest/api.html#module-radon.complexity)
+[![coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)](https://pybuilder.io/)
+[![complexity](https://img.shields.io/badge/complexity-A-brightgreen)](https://radon.readthedocs.io/en/latest/api.html#module-radon.complexity)
 [![vulnerabilities](https://img.shields.io/badge/vulnerabilities-None-brightgreen)](https://pypi.org/project/bandit/)
 [![python](https://img.shields.io/badge/python-3.7%20%7C%203.8%20%7C%203.9%20%7C%203.10-teal)](https://www.python.org/downloads/)
 
@@ -49,8 +48,7 @@ logs
 Build the Docker image:
 ```bash
 docker image build \
--t \
-mplogp:latest .
+-t mplogp:latest .
 ```
 
 Run the Docker container:
